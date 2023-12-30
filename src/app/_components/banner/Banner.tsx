@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import BannerProps from "./Banner.type";
+import Button from "../button/Button";
+import Image from "next/image";
+import Logo from "/public/images/header/Rectangle 1506.jpg";
 
 const Banner = ({ mode }: BannerProps) => {
   const modeList = [
@@ -34,9 +37,20 @@ const Banner = ({ mode }: BannerProps) => {
   ];
 
   return (
-    <BannerContainer>
-      <Title>{title[index]}</Title>
-      <SubTitle>{subTitle[index]}</SubTitle>
+    <BannerContainer index={index}>
+      <Title>{index && title[index]}</Title>
+      <SubTitle>{index && subTitle[index]}</SubTitle>
+      <Button
+        onClick={() => console.log("Button clicked")}
+        width={"103"}
+        height={"48"}
+        children={
+          <div>
+            <Image src={Logo} alt="" />
+            <p>작성하기</p>
+          </div>
+        }
+      />
     </BannerContainer>
   );
 };
@@ -48,9 +62,26 @@ const BannerContainer = styled.div`
   justify-content: center;
   width: 989px;
   height: 99px;
-  background: #dbe5e1;
+  background: ${({ index }) =>
+    index
+      ? index === 0 || index === 1
+        ? `#dbe5e1;`
+        : index === 2
+        ? `#E9E5D9;`
+        : `#EEDCE1;`
+      : `#dbe5e1;`};
 `;
 
-const Title = styled.div``;
+const Title = styled.div`
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`;
 
-const SubTitle = styled.div``;
+const SubTitle = styled.div`
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`;
