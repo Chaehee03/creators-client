@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import BannerProps from "./Banner.type";
 
@@ -11,10 +11,11 @@ const Banner = ({ mode }: BannerProps) => {
     "mentorAdvice",
   ];
 
-  const [index, setIndex] = useState(modeList.indexOf(mode));
-  // mode=="feedback" ? index=0 :
+  const [index, setIndex] = useState(mode && modeList.indexOf(mode));
 
-  setIndex(modeList.indexOf(mode));
+  useEffect(() => {
+    setIndex(mode && modeList.indexOf(mode));
+  }, [mode]);
 
   const title = [
     "피드백 받기",
@@ -34,8 +35,8 @@ const Banner = ({ mode }: BannerProps) => {
 
   return (
     <BannerContainer>
-      <Title>title[index]</Title>
-      <SubTitle>subTitle[index]</SubTitle>
+      <Title>{title[index]}</Title>
+      <SubTitle>{subTitle[index]}</SubTitle>
     </BannerContainer>
   );
 };
