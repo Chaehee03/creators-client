@@ -3,7 +3,7 @@ import styled from "styled-components";
 import BannerProps from "./Banner.type";
 import Button from "../button/Button";
 import Image from "next/image";
-import Logo from "/public/images/header/Rectangle 1506.jpg";
+import Post from "/public/images/button/post.jpg";
 
 const Banner = ({ mode }: BannerProps) => {
   const modeList = [
@@ -44,11 +44,12 @@ const Banner = ({ mode }: BannerProps) => {
         onClick={() => console.log("Button clicked")}
         width={"103"}
         height={"48"}
+        padding="12"
         children={
-          <div>
-            <Image src={Logo} alt="" />
+          <ButtonContents>
+            <Image src={Post} alt="" width={15} height={15} />
             <p>작성하기</p>
-          </div>
+          </ButtonContents>
         }
       />
     </BannerContainer>
@@ -84,4 +85,9 @@ const SubTitle = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+`;
+
+const ButtonContents = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
