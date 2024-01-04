@@ -6,6 +6,8 @@ type ButtonProps = {
   width?: string;
   padding?: string;
   color?: string;
+  backgroundColor?: string;
+  borderColor?: string;
   children?: React.ReactNode;
 };
 
